@@ -1,0 +1,126 @@
+﻿<Window
+    x:Class="Bank.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Bank"
+    xmlns:Styles="clr-namespace:Styles"
+    mc:Ignorable="d"
+    Width="600"
+    Height="800"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    Icon="../../Resources/icon.ico"
+    Title="Bank">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/ImageButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+
+    <Grid
+        Background="{StaticResource WindowBackgroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+				Width="50*" />
+            <ColumnDefinition
+				Width="225*" />
+            <ColumnDefinition
+				Width="50*" />
+            <ColumnDefinition
+				Width="225*" />
+            <ColumnDefinition
+				Width="50*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition
+				Height="50*" />
+            <RowDefinition
+				Height="200*" />
+            <RowDefinition
+				Height="50*" />
+            <RowDefinition
+				Height="200*" />
+            <RowDefinition
+				Height="50*" />
+            <RowDefinition
+				Height="200*" />
+            <RowDefinition
+				Height="50*" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="1"
+            Grid.RowSpan="3"
+            Grid.Column="1">
+            
+            <Grid.OpacityMask>
+                <VisualBrush
+                    Visual="{Binding ElementName=LogoBorder}" />
+            </Grid.OpacityMask>
+            
+            <Border 
+                x:Name="LogoBorder"
+                CornerRadius="15"
+                Background="{StaticResource BackgroundBrush}" />
+
+            <Image 
+                Name="LogoImage"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Stretch="Fill"
+                Source="{Binding LogoImagePath}" />
+
+            <Border
+                x:Name="LogoBorderInner"
+                CornerRadius="15"
+                BorderThickness="3"
+                BorderBrush="{StaticResource BorderBrush}" />
+        </Grid>
+
+        <Styles:ImageButton 
+            x:Name="imageButtonCreateInfo"
+            Grid.Row="5"
+            Grid.Column="1"
+            Style="{StaticResource CustomImageButtonStyle}"
+            Image="{Binding CreateInfoPath}"
+            Content="{Binding CreateInfoTitle}"
+            Command="{Binding OpenCreateInfoCommand}" />
+
+        <Styles:ImageButton 
+            x:Name="imageButtonCheckBalance"
+            Grid.Row="1"
+            Grid.Column="3"
+            Style="{StaticResource CustomImageButtonStyle}"
+            Image="{Binding CheckBalancePath}"
+            Content="{Binding CheckBalanceTitle}"
+            Command="{Binding OpenCheckBalanceCommand}" />
+
+        <Styles:ImageButton 
+            x:Name="imageButtonGiveMoney"
+            Grid.Row="3"
+            Grid.Column="3"
+            Style="{StaticResource CustomImageButtonStyle}"
+            Image="{Binding GiveMoneyPath}"
+            Content="{Binding GiveMoneyTitle}"
+            Command="{Binding OpenGiveMoneyCommand}" />
+
+        <Styles:ImageButton 
+            x:Name="imageButtonTakeMoney"
+            Grid.Row="5"
+            Grid.Column="3"
+            Style="{StaticResource CustomImageButtonStyle}"
+            Image="{Binding TakeMoneyPath}"
+            Content="{Binding TakeMoneyTitle}"
+            Command="{Binding OpenTakeMoneyCommand}" />
+    </Grid>
+</Window>
